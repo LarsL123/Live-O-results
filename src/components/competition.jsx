@@ -3,9 +3,10 @@ import ResultTable from "./resultTable";
 import Classes from "./classes";
 
 const Competition = props => {
-  const [currentClass, setCurrentClass] = useState(null);
+  const [currentClass, setCurrentClass] = useState({ name: "Classes" });
   const onClassChanged = c => {
-    setCurrentClass(c.name);
+    if (c.name === "Classes") return;
+    setCurrentClass(c);
   };
   console.log("rerendering competitions");
   const { compId } = props.match.params;

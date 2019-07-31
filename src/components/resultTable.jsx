@@ -1,33 +1,25 @@
 import React, { useState, useEffect } from "react";
 import Table from "./common/table";
 import { getClassResult } from "../services/resultService";
+import _ from "lodash";
 
 const ResultTable = props => {
   const { competitionId, currentClass } = props;
-  const [competitors, setCompetitors] = useState([
-    { name: "Lars", time: "42 min" }
-  ]);
+  const [competitors, setCompetitors] = useState([]);
   const [columns, setColumns] = useState();
-  const [sortColumn, setSortColumn] = useState({ path: "name", order: "asc" });
+  const [sortColumn, setSortColumn] = useState({ path: "place", order: "asc" });
 
   const onSort = newSortColumn => {
     setSortColumn({ ...newSortColumn });
   };
 
   useEffect(() => {
-    async function fetch() {
-      setCompetitors(await getClassResult(competitionId, currentClass));
-    }
-    fetch();
-  }, [currentClass]);
-
-  useEffect(() => {
     let cols = [
+      { path: "place", label: "Place" },
       {
         path: "name",
         label: "Name"
       },
-      { path: "place", label: "Place" },
       { path: "result", label: "Time" },
       { path: "timeplus", label: "After" }
     ];
@@ -35,12 +27,40 @@ const ResultTable = props => {
     setColumns(cols);
   }, []);
 
-  if (!competitors || !competitors.className)
-    return <h5>Ther are no people in this class</h5>;
+  useEffect(() => {
+    async function fetch() {
+      console.log("sending http");
+      setCompetitors(await getClassResult(competitionId, currentClass.name));
+    }
+    fetch();
+  }, [competitionId, currentClass]);
+
+  if (!competitors || !competitors.className || competitors.results.length < 1)
+    return <h5>There are no people in this class</h5>;
+
+  function sort() {
+    if (sortColumn.path !== "place") {
+      return _.orderBy(
+        competitors.results,
+        [sortColumn.path],
+        [sortColumn.order]
+      );
+    }
+    const results = [];
+    competitors.results.forEach((element, index) => {
+      element.place = parseInt(element.place);
+      if (isNaN(element.place)) {
+        element.place = "-";
+      }
+      results[index] = element;
+    });
+    return results;
+  }
+
   return (
     <Table
       columns={columns}
-      data={competitors.results}
+      data={sort()}
       sortColumn={sortColumn}
       onSort={onSort}
     />

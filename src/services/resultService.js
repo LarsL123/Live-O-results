@@ -21,3 +21,9 @@ export async function getClassResult(competitionId, className) {
 
   return results;
 }
+
+export async function getCompetitions() {
+  const request = await httpService.get("?method=getcompetitions");
+
+  return request.data.competitions;
+}
