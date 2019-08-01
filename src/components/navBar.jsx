@@ -36,8 +36,11 @@ const NavBar = () => {
             About
           </a>
           <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a className="dropdown-item" href="#">
-              Action
+            <a
+              className="dropdown-item"
+              href="https://github.com/LarsL123/Live-O-results"
+            >
+              Source Code
             </a>
             <a className="dropdown-item" href="#">
               Another action

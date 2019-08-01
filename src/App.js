@@ -4,7 +4,7 @@ import { ToastContainer } from "react-toastify";
 import Navbar from "./components/navBar";
 import Competition from "./components/competition";
 import CompetitionSelect from "./components/competitionSelect";
-import NotFound from "./components/notFound";
+import NotFound from "./components/common/notFound";
 
 import "./App.css";
 

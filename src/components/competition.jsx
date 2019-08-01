@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import ResultTable from "./resultTable";
+import ResultTable from "./resultsTable/resultTable";
 import Classes from "./classes";
 
 const Competition = props => {
