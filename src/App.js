@@ -8,6 +8,8 @@ import NotFound from "./components/common/notFound";
 
 import "./App.css";
 
+//Router propbelm: https://stackoverflow.com/questions/27928372/react-router-urls-dont-work-when-refreshing-or-writing-manually?page=1&tab=votes#tab-top
+
 function App() {
   return (
     <React.Fragment>

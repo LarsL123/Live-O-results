@@ -24,33 +24,39 @@ const NavBar = () => {
             </a>
           </li>
         </ul>
-        <div className="nav-item dropdown ">
-          <a
-            className="nav-link dropdown-toggle "
-            id="navbarDropdown"
-            role="button"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
-          >
-            About
-          </a>
-          <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+
+        <ul className="navbar-nav ml-auto">
+          <div className="nav-item dropdown ">
             <a
-              className="dropdown-item"
-              href="https://github.com/LarsL123/Live-O-results"
+              className="nav-link dropdown-toggle "
+              id="navbarDropdown"
+              role="button"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
             >
-              Source Code
+              About
             </a>
-            <a className="dropdown-item" href="#">
-              Another action
-            </a>
-            <div className="dropdown-divider" />
-            <a className="dropdown-item" href="#">
-              Something else here
-            </a>
+            <div
+              className="dropdown-menu dropdown-menu-right"
+              aria-labelledby="navbarDropdown"
+            >
+              <a
+                className="dropdown-item"
+                href="https://github.com/LarsL123/Live-O-results"
+              >
+                Source Code
+              </a>
+              <a className="dropdown-item" href="#">
+                Another action
+              </a>
+              <div className="dropdown-divider" />
+              <a className="dropdown-item" href="#">
+                Something else here
+              </a>
+            </div>
           </div>
-        </div>
+        </ul>
       </div>
     </nav>
   );
