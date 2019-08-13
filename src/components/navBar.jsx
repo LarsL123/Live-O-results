@@ -33,7 +33,7 @@ const NavBar = () => {
               role="button"
               data-toggle="dropdown"
               aria-haspopup="true"
-              aria-expanded="false"
+              aria-expanded="false" //fIX   TEH  MOBILE ISSUE???
             >
               About
             </a>
